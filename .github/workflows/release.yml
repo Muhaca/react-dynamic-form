@@ -28,6 +28,29 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
 
+      # Trusted publishing (OIDC) butuh npm >= 11.5.1. Node 20 membawa npm 10,
+      # jadi upgrade npm khusus untuk publish — tidak mengubah resolusi
+      # dependency karena install tetap lewat pnpm.
+      - name: Upgrade npm for OIDC trusted publishing
+        run: npm install -g npm@^11
+
+      # Auth npm:
+      # - NPM_TOKEN ada  -> dipakai (wajib untuk publish PERTAMA, karena npm
+      #   tidak mengizinkan first-publish lewat OIDC).
+      # - NPM_TOKEN kosong/secret dihapus -> fallback ke OIDC (id-token: write).
+      # Setelah package ada & Trusted Publisher dikonfigurasi di npmjs.com,
+      # hapus secret NPM_TOKEN untuk beralih penuh ke OIDC.
+      - name: Configure npm authentication
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -n "$NPM_TOKEN" ]; then
+            echo "NODE_AUTH_TOKEN=$NPM_TOKEN" >> "$GITHUB_ENV"
+            echo "npm auth: NPM_TOKEN"
+          else
+            echo "npm auth: OIDC trusted publishing"
+          fi
+
       - name: Create release PR or publish
         uses: changesets/action@v1
         with:
@@ -35,5 +58,4 @@ jobs:
           publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
