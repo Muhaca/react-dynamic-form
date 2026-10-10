@@ -1,4 +1,4 @@
-# react-dynamic-form
+# @adiproject.dev/react-dynamic-form
 
 Build, render and validate **dynamic forms driven by backend JSON** in React.
 One package, three opt-in layers:
@@ -20,7 +20,7 @@ One package, three opt-in layers:
 ## Install
 
 ```bash
-pnpm add react-dynamic-form
+pnpm add @adiproject.dev/react-dynamic-form
 # peers
 pnpm add react react-dom react-hook-form
 # only if you use the tailwind renderers
@@ -34,8 +34,8 @@ dependencies of this package.
 
 ```tsx
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { DynamicForm, FieldRegistryProvider, type BackendSchemaResponse } from 'react-dynamic-form';
-import { tailwindFieldRegistry } from 'react-dynamic-form/tailwind';
+import { DynamicForm, FieldRegistryProvider, type BackendSchemaResponse } from '@adiproject.dev/react-dynamic-form';
+import { tailwindFieldRegistry } from '@adiproject.dev/react-dynamic-form/tailwind';
 
 const queryClient = new QueryClient();
 
@@ -66,10 +66,10 @@ export function OrderFormPage() {
 
 | Import | Contents |
 | --- | --- |
-| `react-dynamic-form` | core + react (`DynamicForm`, `FieldRegistryProvider`, `useDynamicForm`, parser/validator/generator, types) |
-| `react-dynamic-form/core` | parser, validator, JSON-Schema generator, constants, types (no React) |
-| `react-dynamic-form/tailwind` | `tailwindFieldRegistry` + individual renderers |
-| `react-dynamic-form/builder` | `FormBuilder`, `useFormBuilder`, `Palette`, `Canvas`, `PropertyPanel`, `fieldTree`, … |
+| `@adiproject.dev/react-dynamic-form` | core + react (`DynamicForm`, `FieldRegistryProvider`, `useDynamicForm`, parser/validator/generator, types) |
+| `@adiproject.dev/react-dynamic-form/core` | parser, validator, JSON-Schema generator, constants, types (no React) |
+| `@adiproject.dev/react-dynamic-form/tailwind` | `tailwindFieldRegistry` + individual renderers |
+| `@adiproject.dev/react-dynamic-form/builder` | `FormBuilder`, `useFormBuilder`, `Palette`, `Canvas`, `PropertyPanel`, `fieldTree`, … |
 
 ## Tailwind setup (important)
 
@@ -82,20 +82,20 @@ package. Tailwind cannot see them unless you add the package's `dist` to your
 module.exports = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
-    './node_modules/react-dynamic-form/dist/**/*.{js,mjs}',
+    './node_modules/@adiproject.dev/react-dynamic-form/dist/**/*.{js,mjs}',
   ],
 };
 ```
 
-If you use only `react-dynamic-form` + a custom registry and never import
-`react-dynamic-form/tailwind` or `/builder`, you can skip this.
+If you use only `@adiproject.dev/react-dynamic-form` + a custom registry and never import
+`@adiproject.dev/react-dynamic-form/tailwind` or `/builder`, you can skip this.
 
 ## Custom renderers
 
 Any project with its own design system can drop the Tailwind layer completely:
 
 ```tsx
-import { DynamicForm, FieldRegistryProvider, type FieldRegistry } from 'react-dynamic-form';
+import { DynamicForm, FieldRegistryProvider, type FieldRegistry } from '@adiproject.dev/react-dynamic-form';
 
 const customRegistry: FieldRegistry = {
   text: MyTextInput,
@@ -116,7 +116,7 @@ A renderer receives `{ field, control, children? }` and uses
 ## Form builder
 
 ```tsx
-import { FormBuilder, type FieldConfig } from 'react-dynamic-form/builder';
+import { FormBuilder, type FieldConfig } from '@adiproject.dev/react-dynamic-form/builder';
 
 <FormBuilder
   initialFields={existingFields}

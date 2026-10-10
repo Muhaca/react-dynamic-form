@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { DynamicForm, type BackendSchemaResponse } from 'react-dynamic-form';
-import { FormBuilder } from 'react-dynamic-form/builder';
+import { DynamicForm, type BackendSchemaResponse } from '@adiproject.dev/react-dynamic-form';
+import { FormBuilder } from '@adiproject.dev/react-dynamic-form/builder';
 
 async function fetchSchema(formId: string): Promise<BackendSchemaResponse> {
   const res = await fetch(`/api/forms/${formId}`);

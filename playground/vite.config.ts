@@ -11,10 +11,10 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: [
-      { find: 'react-dynamic-form/core', replacement: path.join(src, 'core/index.ts') },
-      { find: 'react-dynamic-form/tailwind', replacement: path.join(src, 'tailwind/index.ts') },
-      { find: 'react-dynamic-form/builder', replacement: path.join(src, 'builder/index.ts') },
-      { find: 'react-dynamic-form', replacement: path.join(src, 'index.ts') },
+      { find: '@adiproject.dev/react-dynamic-form/core', replacement: path.join(src, 'core/index.ts') },
+      { find: '@adiproject.dev/react-dynamic-form/tailwind', replacement: path.join(src, 'tailwind/index.ts') },
+      { find: '@adiproject.dev/react-dynamic-form/builder', replacement: path.join(src, 'builder/index.ts') },
+      { find: '@adiproject.dev/react-dynamic-form', replacement: path.join(src, 'index.ts') },
     ],
   },
   server: {

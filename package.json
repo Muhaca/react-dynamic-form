@@ -1,6 +1,9 @@
 {
-  "name": "react-dynamic-form",
+  "name": "@adiproject.dev/react-dynamic-form",
   "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Build, render and validate dynamic JSON-schema-driven forms in React. Headless core, hooks, Tailwind renderers and a drag-and-drop form builder.",
   "type": "module",
   "sideEffects": false,
