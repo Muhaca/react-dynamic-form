@@ -9,13 +9,13 @@
   "sideEffects": false,
   "license": "MIT",
   "author": "",
-  "homepage": "https://github.com/muhaca/react-dynamic-form#readme",
+  "homepage": "https://github.com/Muhaca/react-dynamic-form#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/muhaca/react-dynamic-form.git"
+    "url": "git+https://github.com/Muhaca/react-dynamic-form.git"
   },
   "bugs": {
-    "url": "https://github.com/muhaca/react-dynamic-form/issues"
+    "url": "https://github.com/Muhaca/react-dynamic-form/issues"
   },
   "keywords": [
     "react",
